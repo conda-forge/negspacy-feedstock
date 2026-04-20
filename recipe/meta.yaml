@@ -1,5 +1,5 @@
 {% set name = "negspacy" %}
-{% set version = "1.0.4" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/negspacy-{{ version }}.tar.gz
-  sha256: c068bfbbcd28a63969733c3310a40e557a802b8fbb6b79cd724d6261860abb7c
+  sha256: 13d8c4d7bd1b9f5c7e83bc1d7e4689ca70ace3232b8b0c38c22a3807fc0b9a1f
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
@@ -21,7 +21,11 @@ requirements:
     - pip
   run:
     - python >={{ python_min }}
-    - spacy >=3.0.1,<4.0.0
+    - spacy >=3.8,<4.0
+    # - ruff 
+    # - pytest-cov 
+    # - pytest >=8
+    # - pre-commit 
 
 test:
   imports:
