@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/prefix-dev/recipe-format/main/schema.json
+schema_version: 1
+
+context:
+  version: "1.1.0"
+
+package:
+  name: negspacy
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/n/negspacy/negspacy-${{ version }}.tar.gz
+  sha256: 13d8c4d7bd1b9f5c7e83bc1d7e4689ca70ace3232b8b0c38c22a3807fc0b9a1f
+
+build:
+  number: 0
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - hatchling
+  run:
+    - python >=${{ python_min }}
+    - spacy <4.0,>=3.8
+
+tests:
+  - python:
+      imports:
+      pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
+
+about:
+  homepage: https://github.com/jenojp/negspacy
+  license: MIT
+  license_file: LICENSE
+  summary: A spaCy pipeline component for negating concepts in text (NegEx).
+  description: |
+    A spaCy pipeline component for negating concepts in text (NegEx).
+
+extra:
+  recipe-maintainers:
+    - rxm7706
