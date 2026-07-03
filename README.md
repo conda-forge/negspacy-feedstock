@@ -7,7 +7,9 @@ Home: https://github.com/jenojp/negspacy
 
 Package license: MIT
 
-Summary: A spaCy pipeline object for negation.
+Summary: A spaCy pipeline component for negating concepts in text (NegEx).
+
+A spaCy pipeline component for negating concepts in text (NegEx).
 
 Current build status
 ====================
